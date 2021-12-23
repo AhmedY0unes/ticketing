@@ -1,7 +1,9 @@
 name: tests-orders
 
 on:
-  pull_request
+  pull_request:
+    paths:
+      - 'orders/**' #specifically run this test only when any change happens in the orders dir
   
 jobs:
   build: #create a container

@@ -1,7 +1,9 @@
 name: tests-auth
 
 on:
-  pull_request
+  pull_request:
+    paths:
+      - 'auth/**' #specifically run this test only when any change happens in the auth dir
   
 jobs:
   build: #create a container

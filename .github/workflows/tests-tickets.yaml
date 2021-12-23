@@ -1,8 +1,9 @@
 name: tests-tickets
 
 on:
-  pull_request
-  
+  pull_request:
+    paths:
+      - 'tickets/**' #specifically run this test only when any change happens in the tickets dir
 jobs:
   build: #create a container
     runs-on: ubuntu-latest #use ubuntu as the virual machine os
