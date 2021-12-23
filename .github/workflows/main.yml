@@ -1,0 +1,12 @@
+name: tests
+
+on:
+  pull_request
+  
+jobs:
+  build: #create a container
+    runs-on: ubuntu-latest #use ubuntu as the virual machine os
+    steps:
+      - uses: actions/checkout@v2 #takes all the code in our project
+      # goes in auth dir then run npm install then runs all the tests only once and that is the ci for
+      - run: cd auth && npm install && npm run test:ci
