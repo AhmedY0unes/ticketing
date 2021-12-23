@@ -19,11 +19,10 @@ const setup = async () => {
 
   // Create a fake data object
 
-  const data: OrderCreatedEvent['data'] = {
+  const data = {
     id: new mongoose.Types.ObjectId().toHexString(),
     userId: 'ahmed',
     expiresAt: 'sasass',
-    status: OrderStatus.Created,
     version: 0,
     ticket: {
       id: ticket.id,
@@ -40,7 +39,7 @@ const setup = async () => {
 
 it('sets the userId of the ticket', async () => {
   const { listener, ticket, data, msg } = await setup();
-
+  //@ts-ignore
   await listener.onMessage(data, msg);
 
   const updatedTicket = await Ticket.findById(ticket.id);
@@ -50,7 +49,7 @@ it('sets the userId of the ticket', async () => {
 
 it('acks the message', async () => {
   const { listener, data, msg } = await setup();
-
+  //@ts-ignore
   await listener.onMessage(data, msg);
 
   expect(msg.ack).toHaveBeenCalled();
@@ -58,7 +57,7 @@ it('acks the message', async () => {
 
 it('publishes a ticket updated event', async () => {
   const { listener, data, msg } = await setup();
-
+  //@ts-ignore
   await listener.onMessage(data, msg);
 
   expect(natsWrapper.client.publish).toHaveBeenCalled();
