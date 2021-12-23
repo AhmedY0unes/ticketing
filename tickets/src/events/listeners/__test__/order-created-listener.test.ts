@@ -2,7 +2,7 @@ import { OrderCreatedListener } from '../order-created-listener';
 import { natsWrapper } from '../../../nats-wrapper';
 import { Ticket } from '../../../models/ticket';
 import mongoose from 'mongoose';
-import { OrderCreatedEvent } from '@ay-ms-pain/common';
+import { OrderCreatedEvent, OrderStatus } from '@ay-ms-pain/common';
 import { Message } from 'node-nats-streaming';
 
 const setup = async () => {
@@ -24,6 +24,7 @@ const setup = async () => {
     userId: 'ahmed',
     expiresAt: 'sasass',
     version: 0,
+    status: OrderStatus.Created,
     ticket: {
       id: ticket.id,
       price: 20,
