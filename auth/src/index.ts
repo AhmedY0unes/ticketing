@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import { app } from './app';
 const dbURL = 'mongodb://auth-mongo-srv:27017/auth';
 const start = async () => {
-  console.log('Starting Up...');
+  console.log('Starting Up.....');
   if (!process.env.JWT_KEY) {
     throw new Error('JWT_KEY must be defiend');
   } //
